@@ -13,7 +13,12 @@ void Parser::CheckCorrectRounding(const std::string &argc) {
 }
 
 void Parser::ParseRounding(const std::string &argc) {
-    data_->type_rounding = std::stoi(argc);
+    try {
+        data_->type_rounding = std::stoi(argc);
+    } catch (std::out_of_range) {
+        std::cerr << "Error, too many type rounding" << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
 
