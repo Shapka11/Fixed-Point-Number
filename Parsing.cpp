@@ -42,23 +42,20 @@ void Parser::CheckCorrectNumber(const std::string &argc) {
             exit(EXIT_FAILURE);
         }
     }
-
-    try {
-        uint32_t num = std::stoul(argc, nullptr, 16);
-        --num;
-    } catch (std::out_of_range) {
-        std::cerr << "Error, too many number" << std::endl;
-        exit(EXIT_FAILURE);
-    }
 }
 
 void Parser::ParseNum(const std::string &argc, uint32_t &num) {
-    num = std::stoul(argc, nullptr, 16);
-    size_t size_num = CountBitsNum(num);
-    if (size_num > data_->a + data_->b) {
-        int shift = 32 - (data_->a + data_->b);
-        num <<= shift;
-        num >>= shift;
+    try {
+        num = std::stoul(argc, nullptr, 16);
+        size_t size_num = CountBitsNum(num);
+        if (size_num > data_->a + data_->b) {
+            int shift = 32 - (data_->a + data_->b);
+            num <<= shift;
+            num >>= shift;
+        }
+    } catch (std::out_of_range) {
+        std::cerr << "Error, too many number" << std::endl;
+        exit(EXIT_FAILURE);
     }
 }
 
