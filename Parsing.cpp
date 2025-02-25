@@ -45,6 +45,7 @@ void Parser::CheckCorrectNumber(const std::string &argc) {
 
     try {
         uint32_t num = std::stoul(argc, nullptr, 16);
+        --num;
     } catch (std::out_of_range) {
         std::cerr << "Error, too many number" << std::endl;
         exit(EXIT_FAILURE);
