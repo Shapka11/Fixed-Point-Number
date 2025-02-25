@@ -251,22 +251,17 @@ void Operation::Division(Data *data) {
     dividend <<= (64 - data->a - data->b);
     result_ = (uint64_t)dividend / data->num2;
 
-    //std::cout << "res " << result_ << std::endl;
-
     round.SetAAndB(data->a, data->b);
     round.SetNum(result_);
     round.SetNumberDigitsAfterB(64 - data->a - 2 * data->b);
     round.SetSign(sign_res_);
     result_ = round.GetResult(data->type_rounding);
 
-    //std::cout << "res " << result_ << std::endl;
-
     if (sign_res_) {
         result_ = -result_;
     }
-    //std::cout << "res " << result_ << std::endl;
+
     result_ = result_ << (64 - data->a - data->b) >> (64 - data->a - data->b);
-    //std::cout << "res " << result_ << std::endl;
 }
 
 

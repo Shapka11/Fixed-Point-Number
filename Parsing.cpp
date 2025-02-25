@@ -37,7 +37,7 @@ void Parser::CheckCorrectNumber(const std::string &argc) {
     }
 
     for (int i = 2; i < argc.size(); ++i) {
-        if (!(argc[i] >= 'a' && argc[i] <= 'f' || argc[i] >= 'A' && argc[i] <= 'F' || argc[i] >= '0' && argc[i] <= '9')) {
+        if (!((argc[i] >= 'a' && argc[i] <= 'f') || (argc[i] >= 'A' && argc[i] <= 'F') || (argc[i] >= '0' && argc[i] <= '9'))) {
             std::cerr << "Error, incorrect number" << std::endl;
             exit(EXIT_FAILURE);
         }
