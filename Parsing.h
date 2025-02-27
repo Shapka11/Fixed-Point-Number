@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cstring>
 #include <iostream>
+#include <stdio.h>
 #include <string>
 
 
@@ -18,18 +19,16 @@ struct Data {
 class Parser {
 public:
     Parser(Data *data);
-    void ParseFirstVariant(char **argc);
-    void ParseSecondVariant(char **argc);
+    bool ParseFirstVariant(char **argc);
+    bool ParseSecondVariant(char **argc);
 
 private:
     Data *data_;
+    bool is_correct_args_ = true;
 
-    void CheckCorrectRounding(const std::string &argc);
-    void CheckCorrectOperation(const std::string &argc);
     void CheckCorrectNumber(const std::string &argc);
-    void CheckCorrectFormat(const std::string &argc);
 
-    void ParseFormat(const std::string &argc);
+    void ParseFormat(const char *argc);
     void ParseOperation(const std::string &argc);
     void ParseRounding(const std::string &argc);
     void ParseNum(const std::string &argc, uint32_t &num);
